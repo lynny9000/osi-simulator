@@ -1,9 +1,8 @@
 import time
 import re
 
-# ===== Validation Functions =====
+# Validation Functions
 # These check user input before continuing
-
 def validate_port(port):
     return port.isdigit() and 1 <= int(port) <= 65535
 
@@ -21,7 +20,7 @@ print()
 print("=== Encapsulation (Building Packet) ===")
 time.sleep(3)
 
-# ===== Layer 7: Application =====
+# Layer 7: Application
 # Application creates the original data
 print("\n--- Layer 7: Application ---")
 data = input("Enter data (e.g. GET / HTTP/1.1): ") or "GET / HTTP/1.1"
@@ -33,7 +32,7 @@ print(f"[DATA: {data}]")
 print()
 time.sleep(3)
 
-# ===== Layer 4: Transport (TCP) =====
+# Layer 4: Transport (TCP)
 # TCP adds ports and wraps data
 print("--- Layer 4: Transport (TCP) ---")
 
@@ -67,7 +66,7 @@ print(f"[TCP src={source_port} dst={destination_port}] -> "
 print()
 time.sleep(3)
 
-# ===== Layer 3: Network (IP) =====
+# Layer 3: Network (IP)
 # IP adds logical addressing
 print("--- Layer 3: Network (IP) ---")
 
@@ -99,7 +98,7 @@ print(f"[IP src={source_ip} dst={destination_ip}] -> "
 print()
 time.sleep(3)
 
-# ===== Layer 2: Data Link (Ethernet) =====
+# Layer 2: Data Link (Ethernet)
 # Ethernet adds MAC addresses
 print("--- Layer 2: Data Link (Ethernet) ---")
 
@@ -132,20 +131,19 @@ print(f"[ETH src={source_mac} dst={destination_mac}] -> "
 print()
 time.sleep(3)
 
-# ===== Transmission =====
+# Transmission
 # Simulate sending across the network
 print("--- Data transmitted over network ---\n")
 time.sleep(3)
 
-# ======================
-# DECAPSULATION
-# ======================
+
+# Decapsulation
 # Receiving side unwraps layers
 
 print("=== Decapsulation (Receiving Data) ===\n")
 time.sleep(3)
 
-# ===== Layer 2 =====
+# Layer 2
 print("--- Layer 2: Data Link (Ethernet) ---")
 print("Source MAC:", ethernet_frame["source_mac"])
 print("Destination MAC:", ethernet_frame["destination_mac"])
@@ -159,7 +157,7 @@ print(f"[IP src={source_ip} dst={destination_ip}] -> "
 print()
 time.sleep(3)
 
-# ===== Layer 3 =====
+# Layer 3
 print("--- Layer 3: Network (IP) ---")
 print("Source IP:", ip_payload["source_ip"])
 print("Destination IP:", ip_payload["destination_ip"])
@@ -172,7 +170,7 @@ print(f"[TCP src={source_port} dst={destination_port}] -> "
 print()
 time.sleep(3)
 
-# ===== Layer 4 =====
+# Layer 4
 print("--- Layer 4: Transport (TCP) ---")
 print("Source Port:", tcp_payload["source_port"])
 print("Destination Port:", tcp_payload["destination_port"])
@@ -184,7 +182,7 @@ print(f"[DATA: {data}]")
 print()
 time.sleep(3)
 
-# ===== Layer 7 =====
+# Layer 7
 print("--- Layer 7: Application ---")
 print("Data:", app_data)
 print()
